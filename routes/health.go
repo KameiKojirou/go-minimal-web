@@ -6,8 +6,8 @@ import (
 
 func HealthRoutes() *http.ServeMux {
 	health := http.NewServeMux()
-	health.HandleFunc("GET /get", HealthGet)
-	health.HandleFunc("POST /post", HealthPost)
+	health.HandleFunc("GET /", HealthGet)
+	health.HandleFunc("POST /", HealthPost)
 	return health
 }
 
@@ -18,7 +18,7 @@ func HealthPost(w http.ResponseWriter, r *http.Request) {
 		{
 			"status": "OK",
 			"code": "200",
-			"message": "OK",
+			"message": "Health OK",
 			"method": "POST"
 		}
 	`))
@@ -31,7 +31,7 @@ func HealthGet(w http.ResponseWriter, r *http.Request) {
 		{
 			"status": "OK",
 			"code": "200",
-			"message": "OK"
+			"message": "Health OK"
 			"method": "GET"
 		}
 	`))
