@@ -1,15 +1,15 @@
 package routes
 
 import (
-  "net/http"
-  "main/assets"
+	"fmt"
+	"main/assets"
+	"net/http"
 )
 
-func RootRouter() {
-  rootMux := http.NewServeMux()
-
-  rootMux.Handle("/api/", http.StripPrefix("/api", APIRouter()))
-  rootMux.Handle("/", assets.SPAHandler("index.html"))
-
-  http.ListenAndServe(":1323", rootMux)
+func RootRouter(port string) {
+  mux := http.NewServeMux()
+  mux.Handle("/api/", http.StripPrefix("/api", APIRouter()))
+  mux.Handle("/", assets.SPAHandler("index.html"))
+  fmt.Println("Listening on port", port)
+  http.ListenAndServe(fmt.Sprintf(":%s", port), mux)
 }
