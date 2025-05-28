@@ -1,11 +1,7 @@
 package routes
 
 import (
-	"fmt"
-	"log"
 	"main/middleware"
-
-	// "main/middleware"
 	"net/http"
 )
 
@@ -18,12 +14,8 @@ func APIRouter() *http.ServeMux {
     middleware.ExampleMiddleware,
   )
   mux := http.NewServeMux()
+  mux.Handle("/admin/", http.StripPrefix("/admin", AdminRouter()))
   mux.Handle("/hello", stack(http.HandlerFunc(HelloHandler)))
-  mux.Handle("/hello/{name}", middleware.ExampleMiddleware(http.HandlerFunc(HelloName)))
-  mux.HandleFunc("/items", func(w http.ResponseWriter, r *http.Request) {
-    log.Println("itemsHandler sees:", r.URL.Path)
-    fmt.Fprintln(w, "items endpoint")
-  })
-
+  mux.Handle("/hello/{name}", middleware.ExampleMiddleware(http.HandlerFunc(HelloNameHandler)))
   return mux
 }
