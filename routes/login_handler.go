@@ -15,8 +15,10 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]string{"msg": "cookie not found"})
 		return
 	}
-	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]string{"msg": "Hello, World!", "cookie": fmt.Sprintf("%v", myCookie)})
+	fmt.Println(myCookie)
+	// w.WriteHeader(http.StatusOK)
+	// w.Header().Set("Content-Type", "application/json")
+	// json.NewEncoder(w).Encode(map[string]string{"msg": "Hello, World!", "cookie": fmt.Sprintf("%v", myCookie)})
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
 
