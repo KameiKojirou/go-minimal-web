@@ -9,11 +9,11 @@ import { RouterLink, RouterView } from 'vue-router'
       <!-- Page content here -->
        <div class="flex flex-row justify-center">
          <nav class="flex flex-row flex-1 gap-2 max-w-5xl justify-between [&>a]:btn [&>a]:btn-ghost">
-           <div class="flex flex-row flex-1 gap-2">
-             <RouterLink to="/">Home</RouterLink>
-             <RouterLink to="/about">About</RouterLink>
+           <div class="flex flex-row flex-1 gap-2 p-4">
+             <RouterLink class="btn btn-ghost" to="/">Home</RouterLink>
+             <RouterLink class="btn btn-ghost" to="/about">About</RouterLink>
             </div>
-            <label for="my-drawer" class="btn btn-primary drawer-button">
+            <label for="my-drawer" class="btn btn-primary drawer-button my-4">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                 <path
                 fill="currentColor"
@@ -29,11 +29,11 @@ import { RouterLink, RouterView } from 'vue-router'
   </div>
   <div class="drawer-side">
     <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+    <div class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
       <!-- Sidebar content here -->
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
+      <RouterLink class="btn btn-ghost" to="/">Home</RouterLink>
+      <RouterLink class="btn btn-ghost" to="/about">About</RouterLink>
+    </div>
   </div>
 </div>
 </template>
